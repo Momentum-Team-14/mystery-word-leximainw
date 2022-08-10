@@ -9,6 +9,7 @@ STOP_WORDS = [
 ]
 
 MAX_STARS = 20
+MAX_WORD_LEN = 20
 
 
 def print_word_freq(file):
@@ -23,7 +24,7 @@ def print_word_freq(file):
         reverse=True)
     
     # find the longest word's length
-    max_len = max(len(x[0]) for x in freq)
+    max_len = min(max(len(x[0]) for x in freq), MAX_WORD_LEN)
     
     # find the highest frequency
     max_freq = freq[0][1]
@@ -36,6 +37,8 @@ def print_word_freq(file):
         num_stars = v
         if max_freq > MAX_STARS:
             num_stars = math.ceil(num_stars / (max_freq / MAX_STARS))
+        if len(k) > MAX_WORD_LEN:
+            k = k[slice(MAX_WORD_LEN - 3)] + "..."
         print(f"{k.rjust(max_len)} = {str(v).rjust(max_digits)} {''.rjust(num_stars, '*')}")
 
 
