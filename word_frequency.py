@@ -1,3 +1,6 @@
+import re
+
+
 STOP_WORDS = [
     'a', 'an', 'and', 'are', 'as', 'at', 'be', 'by', 'for', 'from', 'has', 'he',
     'i', 'in', 'is', 'it', 'its', 'of', 'on', 'that', 'the', 'to', 'were',
@@ -18,11 +21,16 @@ def read_word_freq(path):
     while line := file.readline():
         for word in line.split():
             if word:
+                word = normalize_word(word)
                 if word in freq:
                     freq[word] += 1
                 else:
                     freq[word] = 1
     return freq
+
+
+def normalize_word(word):
+    return re.sub('[^a-z]', '', word.lower())
 
 
 if __name__ == "__main__":
