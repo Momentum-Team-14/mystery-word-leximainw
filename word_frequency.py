@@ -13,25 +13,25 @@ MAX_STARS = 20
 
 def print_word_freq(file):
     """Read in `file` and print out the frequency of words in that file."""
-
+    
     # find the word frequencies and filter out the common words
     freq = filter(lambda tuple: tuple[0] not in STOP_WORDS,
         read_word_freq(file).items())
-
+    
     # sort the words by their frequency
     freq = sorted(freq,
         key=lambda tuple: tuple[1],
         reverse=True)
-
+    
     # find the longest word's length
     max_len = max(map(lambda tuple: len(tuple[0]), freq))
-
+    
     # find the highest frequency
     max_freq = freq[0][1]
-
+    
     # find the highest frequency's length
     max_digits = len(str(max_freq))
-
+    
     # print the words
     for k, v in freq:
         num_stars = v
