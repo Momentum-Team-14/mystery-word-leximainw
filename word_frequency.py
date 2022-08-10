@@ -15,8 +15,7 @@ def print_word_freq(file):
     """Read in `file` and print out the frequency of words in that file."""
     
     # find the word frequencies and filter out the common words
-    freq = filter(lambda tuple: tuple[0] not in STOP_WORDS,
-        read_word_freq(file).items())
+    freq = [x for x in read_word_freq(file).items() if x[0] not in STOP_WORDS]
     
     # sort the words by their frequency
     freq = sorted(freq,
@@ -24,7 +23,7 @@ def print_word_freq(file):
         reverse=True)
     
     # find the longest word's length
-    max_len = max(map(lambda tuple: len(tuple[0]), freq))
+    max_len = max(len(x[0]) for x in freq)
     
     # find the highest frequency
     max_freq = freq[0][1]
