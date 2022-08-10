@@ -22,8 +22,7 @@ def print_word_freq(file):
 
     # print the words
     for k, v in freq:
-        if k not in STOP_WORDS:
-            print(f"{k} = {v}")
+        print(f"{k} = {v}")
 
 
 def read_word_freq(path):
