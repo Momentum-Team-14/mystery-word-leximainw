@@ -24,4 +24,4 @@ if __name__ == "__main__":
         print_word_freq(file)
     else:
         print(f"{file} does not exist!")
-        exit(1)
+        exit(2)   # ENOENT error code - no such file or directory
