@@ -37,7 +37,7 @@ def print_word_freq(file):
         num_stars = v
         if max_freq > MAX_STARS:
             num_stars = math.ceil(num_stars / (max_freq / MAX_STARS))
-        print(f"{str.rjust(k, max_len)} = {str.rjust(str(v), max_digits)} {str.rjust('', num_stars, '*')}")
+        print(f"{k.rjust(max_len)} = {str(v).rjust(max_digits)} {''.rjust(num_stars, '*')}")
 
 
 def read_word_freq(path):
