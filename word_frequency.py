@@ -1,3 +1,4 @@
+import math
 import re
 
 
@@ -6,6 +7,8 @@ STOP_WORDS = [
     'i', 'in', 'is', 'it', 'its', 'of', 'on', 'that', 'the', 'to', 'were',
     'will', 'with'
 ]
+
+MAX_STARS = 20
 
 
 def print_word_freq(file):
@@ -23,9 +26,18 @@ def print_word_freq(file):
     # find the longest word's length
     max_len = max(map(lambda tuple: len(tuple[0]), freq))
 
+    # find the highest frequency
+    max_freq = freq[0][1]
+
+    # find the highest frequency's length
+    max_digits = len(str(max_freq))
+
     # print the words
     for k, v in freq:
-        print(f"{str.rjust(k, max_len)} = {v}")
+        num_stars = v
+        if max_freq > MAX_STARS:
+            num_stars = math.ceil(num_stars / (max_freq / MAX_STARS))
+        print(f"{str.rjust(k, max_len)} = {str.rjust(str(v), max_digits)} {str.rjust('', num_stars, '*')}")
 
 
 def read_word_freq(path):
