@@ -10,8 +10,18 @@ STOP_WORDS = [
 
 def print_word_freq(file):
     """Read in `file` and print out the frequency of words in that file."""
-    freq = read_word_freq(file)
-    for k, v in freq.items():
+
+    # find the word frequencies and filter out the common words
+    freq = filter(lambda tuple: tuple[0] not in STOP_WORDS,
+        read_word_freq(file).items())
+
+    # sort the words by their frequency
+    freq = sorted(freq,
+        key=lambda tuple: tuple[1],
+        reverse=True)
+
+    # print the words
+    for k, v in freq:
         if k not in STOP_WORDS:
             print(f"{k} = {v}")
 
