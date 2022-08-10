@@ -45,8 +45,8 @@ def read_word_freq(path):
     freq = {}
     while line := file.readline():
         for word in line.split():
+            word = normalize_word(word)
             if word:
-                word = normalize_word(word)
                 if word in freq:
                     freq[word] += 1
                 else:
