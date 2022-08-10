@@ -20,9 +20,12 @@ def print_word_freq(file):
         key=lambda tuple: tuple[1],
         reverse=True)
 
+    # find the longest word's length
+    max_len = max(map(lambda tuple: len(tuple[0]), freq))
+
     # print the words
     for k, v in freq:
-        print(f"{k} = {v}")
+        print(f"{str.rjust(k, max_len)} = {v}")
 
 
 def read_word_freq(path):
