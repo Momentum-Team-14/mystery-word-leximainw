@@ -40,20 +40,38 @@ def print_word_freq(file):
 
 
 def read_word_freq(path):
-    file = open(path)
+    """Read in `file` and tally the frequency of words in that file."""
+    
     freq = {}
+    
+    # open the target file
+    file = open(path)
+    
+    # read lines until the end of the file
+    # Python's .readline() returns '' only at EOF.
+    # If there's another line, readline() will return a string that ends with '\n'.
     while line := file.readline():
+        
+        # split the current line into individual words
         for word in line.split():
+            
+            # normalize the word so that words containing punctuation
+            # are grouped to a single entry
             word = normalize_word(word)
+            
+            # if the word is non-empty, increment the frequency dict
             if word:
                 if word in freq:
                     freq[word] += 1
                 else:
                     freq[word] = 1
+    
     return freq
 
 
 def normalize_word(word):
+    """Normalize a word to lowercase, with no punctuation."""
+    
     return re.sub('[^a-z]', '', word.lower())
 
 
