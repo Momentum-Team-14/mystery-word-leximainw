@@ -8,14 +8,21 @@ STOP_WORDS = [
 def print_word_freq(file):
     """Read in `file` and print out the frequency of words in that file."""
     freq = read_word_freq(file)
+    for k, v in freq.items():
+        print(f"{k} = {v}")
 
 
 def read_word_freq(path):
     file = open(path)
+    freq = {}
     while line := file.readline():
         for word in line.split():
             if word:
-                print(word)
+                if word in freq:
+                    freq[word] += 1
+                else:
+                    freq[word] = 1
+    return freq
 
 
 if __name__ == "__main__":
