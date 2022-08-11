@@ -76,7 +76,7 @@ def read_word_freq(path):
 def normalize_word(word):
     """Normalize a word to lowercase, with no punctuation."""
 
-    return re.sub('[^a-z-]|(^-+)|(-+$)', '', word.lower())
+    return re.sub("[^a-z\\-']|(^[\\-']+)|([\\-']+$)", '', word.lower())
 
 
 if __name__ == "__main__":
