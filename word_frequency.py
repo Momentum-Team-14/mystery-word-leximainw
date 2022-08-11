@@ -1,3 +1,4 @@
+from collections import defaultdict
 import math
 import re
 
@@ -45,7 +46,7 @@ def print_word_freq(file):
 def read_word_freq(path):
     """Read in `file` and tally the frequency of words in that file."""
     
-    freq = {}
+    freq = defaultdict(int)
     
     # open the target file
     file = open(path)
@@ -63,11 +64,7 @@ def read_word_freq(path):
             word = normalize_word(word)
             
             # if the word is non-empty, increment the frequency dict
-            if word:
-                if word in freq:
-                    freq[word] += 1
-                else:
-                    freq[word] = 1
+            if word: freq[word] += 1
     
     return freq
 
