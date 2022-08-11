@@ -66,6 +66,7 @@ def read_word_freq(path):
             # if the word is non-empty, increment the frequency dict
             if word: freq[word] += 1
     
+    file.close()
     return freq
 
 
