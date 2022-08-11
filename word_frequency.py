@@ -21,8 +21,8 @@ def print_word_freq(file):
 
     # sort the words by their frequency
     freq = sorted(freq,
-        key=lambda tuple: tuple[1],
-        reverse=True)
+                  key=lambda tuple: tuple[1],
+                  reverse=True)
 
     # find the longest word's length
     max_len = min(max(len(x[0]) for x in freq), MAX_WORD_LEN)
@@ -41,7 +41,7 @@ def print_word_freq(file):
         if len(k) > MAX_WORD_LEN:
             k = k[slice(MAX_WORD_LEN - 3)] + "..."
         print(f"{k.rjust(max_len)} = {str(v).rjust(max_digits)}"
-            f" {''.rjust(num_stars, '*')}")
+              f" {''.rjust(num_stars, '*')}")
 
 
 def read_word_freq(path):
