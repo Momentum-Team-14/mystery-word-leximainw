@@ -41,7 +41,7 @@ def print_word_freq(file):
         if len(k) > MAX_WORD_LEN:
             k = k[slice(MAX_WORD_LEN - 3)] + "..."
         print(f"{k.rjust(max_len)} | {str(v).rjust(max_digits)}"
-              f" {''.rjust(num_stars, '*')}")
+              f" {'*' * num_stars}")
 
 
 def read_word_freq(path):
