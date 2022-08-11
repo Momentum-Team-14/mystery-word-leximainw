@@ -40,7 +40,7 @@ def print_word_freq(file):
             num_stars = math.ceil(num_stars / (max_freq / MAX_STARS))
         if len(k) > MAX_WORD_LEN:
             k = k[slice(MAX_WORD_LEN - 3)] + "..."
-        print(f"{k.rjust(max_len)} = {str(v).rjust(max_digits)}"
+        print(f"{k.rjust(max_len)} | {str(v).rjust(max_digits)}"
               f" {''.rjust(num_stars, '*')}")
 
 
