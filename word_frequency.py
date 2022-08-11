@@ -20,7 +20,7 @@ def print_word_freq(file):
     freq = [x for x in read_word_freq(file).items() if x[0] not in STOP_WORDS]
 
     # sort the words by their frequency
-    freq = sorted(freq,
+    freq = sorted(sorted(freq, key=lambda tuple: tuple[0]),
                   key=lambda tuple: tuple[1],
                   reverse=True)
 
